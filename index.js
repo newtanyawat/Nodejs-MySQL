@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const {store_data} = require('./sensor_iot/store_data_DB')
+// const {store_data} = require('./sensor_iot/store_data_DB')
+// const store_pic = require('./sensor_iot/store_data_DB')
 
 var app = express()
 
@@ -21,7 +22,9 @@ app.use((req, res, next) => {
 
 app.use('/api', require('./api'))
 
-store_data
+// store_data
+// store_pic
+
 
 
 app.listen(3000 , () => {

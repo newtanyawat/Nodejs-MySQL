@@ -1,8 +1,8 @@
-const cron = require('node-cron')
+const time_1 = require('node-cron')
 const getdata = require('superagent')
 
 
-const store_data = cron.schedule('*/10 * * * * *', async(req,res) => { // (*second) (*minute) (*hour) (*day of month) (*month) (*day of week)
+const store_data = time_1.schedule('*/2 * * * * *', async() => { // (*second) (*minute) (*hour) (*day of month) (*month) (*day of week)
   try {
     let data_sensor = await getdata.get('http://192.168.1.120/getscale') // รับค่าจาก NODEMCU SENSOR DHT (TEMP,HUMI)
     //console.log("--------------------------------");
@@ -18,9 +18,10 @@ const store_data = cron.schedule('*/10 * * * * *', async(req,res) => { // (*seco
     }
     
   } catch (error) {
-    console.log("sensor part ======>" + error);
+    console.log("DHT sensor part  ======>" + error);
   }
 
 });
 
 exports.store_data = store_data;
+
